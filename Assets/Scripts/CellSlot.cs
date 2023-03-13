@@ -14,8 +14,13 @@ namespace DragnDrop.CharlieHarrop
                 GameObject dropped = eventData.pointerDrag;
                 DraggableItem draggableItem = dropped.GetComponent<DraggableItem>();
                 draggableItem.parentAfterDrag = transform;
-            }
 
+                MoneyManager.moneyPerSecond += draggableItem.GetMoneyGeneration();
+
+                ShopCell.itemNotSlotted = false;
+
+                MoneyManager.currentMoney -= draggableItem.GetPrice();
+            }
         }
     }
 }

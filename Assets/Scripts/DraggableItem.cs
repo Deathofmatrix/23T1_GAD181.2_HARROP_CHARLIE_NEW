@@ -16,9 +16,9 @@ namespace DragnDrop.CharlieHarrop
         public Image item;
 
         //[SerializeField] private Image image;
-        [SerializeField] private int sellValue;
+        [SerializeField] private float moneyGeneration;
         [SerializeField] private string itemType;
-        [SerializeField] private Color itemColour;
+        [SerializeField] private int price;
 
         public void OnBeginDrag(PointerEventData eventData)
         {
@@ -42,12 +42,23 @@ namespace DragnDrop.CharlieHarrop
             item.raycastTarget = true;
         }
 
-        public void SetStats(string newItemType, int newSellValue, Color newItemColour)
+        public void SetStats(string newItemType, float newMoneyGeneration, Color newItemColour, int newPrice)
         {
             itemType = newItemType;
             //image = newImage;
-            sellValue = newSellValue;
-            itemColour = newItemColour;
+            moneyGeneration = newMoneyGeneration;
+            price = newPrice;
+            item.color = newItemColour;
+        }
+
+        public float GetMoneyGeneration()
+        {
+            return moneyGeneration;
+        }
+
+        public int GetPrice()
+        {
+            return price;
         }
     }
 }
