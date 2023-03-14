@@ -16,7 +16,9 @@ namespace DragnDrop.CharlieHarrop
         [SerializeField] private float moneyGenerationAmount;
         [SerializeField] private int itemPrice;
         [SerializeField] private Color itemColour;
-        
+
+        public GameObject newPlant;
+
 
         private void Start()
         {
@@ -41,7 +43,7 @@ namespace DragnDrop.CharlieHarrop
         {
             if (GetComponent<Button>().interactable && !itemNotSlotted)
             {
-                GameObject newPlant = Instantiate(itemPrefab, Input.mousePosition, Quaternion.identity);
+                newPlant = Instantiate(itemPrefab, Input.mousePosition, Quaternion.identity);
                 newPlant.transform.SetParent(canvas.transform, false);
 
                 DraggableItem itemScriptStats = newPlant.GetComponent<DraggableItem>();
